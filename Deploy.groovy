@@ -14,7 +14,7 @@ pipeline {
                        withCredentials([usernamePassword(credentialsId: 'AWS_CREDS', 
                                                      usernameVariable: 'AWS_ACCESS_KEY_ID', 
                                                      passwordVariable: 'AWS_SECRET_ACCESS_KEY'),
-                                     sshAgent(credentialsId: 'ec2-ssh-key')]) {
+                                     sshagent(credentialsId: 'ec2-ssh-key')]) {
                         // Use SSH credentials to log into EC2 and run commands there
                         sh """
                         # Log in to AWS ECR using AWS CLI
