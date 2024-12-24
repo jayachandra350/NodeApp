@@ -10,7 +10,6 @@ pipeline {
     stages {
         stage('Deploy Docker Image on EC2') {
             steps {
-                sshagent(credentials: [SSH_KEY_CREDENTIALS]) {
                     script {
                        withCredentials([usernamePassword(credentialsId: 'AWS_CREDS', 
                                                      usernameVariable: 'AWS_ACCESS_KEY_ID', 
@@ -38,7 +37,6 @@ pipeline {
                 }
             }
         }
-    }
     }
     post {
         success {
