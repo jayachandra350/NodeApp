@@ -24,10 +24,10 @@ pipeline {
                         docker login ${ECR_REPO}
                         
                         # Pull the Docker image from ECR
-                        docker pull ${ECR_REPO}:9
+                        docker pull ${ECR_REPO}:${IMAGE_TAG}
                         
                         # Optionally, run the Docker container (if required)
-                        docker run -d -p 5000:5000 ${ECR_REPO}:9
+                        docker run -d -p 5000:5000 ${ECR_REPO}:${IMAGE_TAG}
                         
                         """
                     
