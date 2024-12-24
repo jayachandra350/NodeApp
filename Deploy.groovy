@@ -39,6 +39,7 @@ pipeline {
             }
         }
     }
+    }
     post {
         success {
             echo 'Docker image deployed successfully on EC2!'
