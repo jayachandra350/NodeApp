@@ -18,10 +18,11 @@
         stage("Push to ecr registry"){
             steps{
                 sh """
-                export AWS_ACCESS_KEY_ID=AKIA6ODU4VFVFSZSWCHT && export AWS_SECRET_ACCESS_KEY=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
-                aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin 992382593386.dkr.ecr.ap-south-1.amazonaws.com/my-node-app
-                docker tag mynodeapp:${BUILD_NUMBER} 992382593386.dkr.ecr.ap-south-1.amazonaws.com/my-node-app:${BUILD_NUMBER}
-                docker push 992382593386.dkr.ecr.ap-south-1.amazonaws.com/my-node-app:${BUILD_NUMBER}
+                #export AWS_ACCESS_KEY_ID=AKIA6ODU4VFVFSZSWCHT && export AWS_SECRET_ACCESS_KEY=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
+                aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v2k5k1u2
+                docker tag mynodeapp:${BUILD_NUMBER} public.ecr.aws/v2k5k1u2/mynodeapp:${BUILD_NUMBER}
+                #docker tag mynodeapp:${BUILD_NUMBER} 992382593386.dkr.ecr.ap-south-1.amazonaws.com/my-node-app:${BUILD_NUMBER}
+                docker push public.ecr.aws/v2k5k1u2/mynodeapp:${BUILD_NUMBER}
                 """
             }
         }
